@@ -1,9 +1,7 @@
 package org.akinosoft.worklogger;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.io.Serial;
 
 public class ChooseDirectoryAction extends AbstractAction {
@@ -13,7 +11,7 @@ public class ChooseDirectoryAction extends AbstractAction {
     @Serial
     private static final long serialVersionUID = 4_833_586_275_117_657_316L;
 
-    public ChooseDirectoryAction(WorkLogger wl){
+    public ChooseDirectoryAction(WorkLogger wl) {
         worklogger = wl;
         putValue(NAME, "Log Directory...");
         putValue(SHORT_DESCRIPTION, "Select log directory.");
@@ -38,7 +36,7 @@ public class ChooseDirectoryAction extends AbstractAction {
             //System.err.println("getCurrentDirectory(): "
             //        +  directoryChooser.getCurrentDirectory());
             //System.err.println("getSelectedFile() : "
-             //       +  directoryChooser.getSelectedFile());
+            //       +  directoryChooser.getSelectedFile());
             if (directoryChooser.getSelectedFile().isDirectory() && directoryChooser.getSelectedFile().canWrite()) {
                 worklogger.conf.setLogPath(directoryChooser.getSelectedFile().toString());
             }

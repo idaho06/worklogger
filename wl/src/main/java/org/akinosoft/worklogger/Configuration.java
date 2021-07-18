@@ -21,26 +21,26 @@ public class Configuration {
 
     }
 
-    public String getGuiTheme(){
+    public String getGuiTheme() {
         return prefs.get(GUI_THEME, "dark");
     }
 
-    public String getLogPath(){
+    public String getLogPath() {
         return prefs.get(LOG_PATH, FileSystemView.getFileSystemView().getHomeDirectory().getAbsolutePath());
     }
 
-    public String getProjectName(){
+    public String getProjectName() {
         return prefs.get(PROJECT_NAME, "WorkLog");
     }
 
-    public void setGuiTheme(String theme){
-        if (theme.equals("dark")){
+    public void setGuiTheme(String theme) {
+        if (theme.equals("dark")) {
             prefs.put(GUI_THEME, "dark");
         }
-        if (theme.equals("light")){
+        if (theme.equals("light")) {
             prefs.put(GUI_THEME, "light");
         }
-        if (theme.equals("switch")){
+        if (theme.equals("switch")) {
             if (getGuiTheme().equals("dark")) {
                 setGuiTheme("light");
             } else {

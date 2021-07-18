@@ -14,7 +14,7 @@ public class QuitAction extends AbstractAction {
     @Serial
     private static final long serialVersionUID = -7_961_256_374_142_311_396L;
 
-    public QuitAction(JFrame frame){
+    public QuitAction(JFrame frame) {
         this.frame = frame;
         putValue(NAME, "Quit");
         putValue(SHORT_DESCRIPTION, "Exit WorkLogger");

@@ -1,9 +1,7 @@
 package org.akinosoft.worklogger;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.io.Serial;
 
 public class SwitchThemeAction extends AbstractAction {
@@ -13,7 +11,7 @@ public class SwitchThemeAction extends AbstractAction {
     @Serial
     private static final long serialVersionUID = -1_872_148_250_966_560_087L;
 
-    public SwitchThemeAction(WorkLogger wl){
+    public SwitchThemeAction(WorkLogger wl) {
         worklogger = wl;
         putValue(NAME, "Change Theme");
         putValue(SHORT_DESCRIPTION, "Dark or light theme change");

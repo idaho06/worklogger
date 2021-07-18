@@ -1,20 +1,19 @@
 package org.akinosoft.worklogger;
 
-import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import org.apache.commons.io.FileUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class WorkLogger implements Runnable{
+public class WorkLogger implements Runnable {
 
     // Private stuff
     //private TestAction testaction;
@@ -29,7 +28,7 @@ public class WorkLogger implements Runnable{
         SwingUtilities.invokeLater(new WorkLogger()); // Swing needs a thread to work correctly. This calls "run()"
     }
 
-    public WorkLogger(){
+    public WorkLogger() {
     }
 
     @Override
@@ -41,9 +40,9 @@ public class WorkLogger implements Runnable{
 
         frame = new MainJFrame(this);
 
-        JPanel mainPanel = new JPanel(new BorderLayout(0,0)); // main panel with north, south, east, west, center locations
+        JPanel mainPanel = new JPanel(new BorderLayout(0, 0)); // main panel with north, south, east, west, center locations
         //Panel exterior border
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         // and a scrollpane containing a text area in the BorderLayout.CENTER
         // JTextArea notepad; // the text edition space. Moved to public element of the class
@@ -55,7 +54,7 @@ public class WorkLogger implements Runnable{
                 notepad,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        notepadverticalscroll.setBorder(BorderFactory.createEmptyBorder(0,0,0,0)); // no ugly borders
+        notepadverticalscroll.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0)); // no ugly borders
 
 
         // Let's create the Quit action menu
@@ -87,7 +86,7 @@ public class WorkLogger implements Runnable{
         menuBar.add(helpMenu);
 
 
-        mainPanel.add(notepadverticalscroll,BorderLayout.CENTER);
+        mainPanel.add(notepadverticalscroll, BorderLayout.CENTER);
 
         frame.setJMenuBar(menuBar);
         frame.setContentPane(mainPanel);
@@ -95,7 +94,7 @@ public class WorkLogger implements Runnable{
         frame.setVisible(true); // show the window
 
         // insert current time by default
-        for(ActionListener a: insertTimeMenuItem.getActionListeners()) {
+        for (ActionListener a : insertTimeMenuItem.getActionListeners()) {
             a.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Insert Time") {
                 //Nothing need go here, the actionPerformed method (with the
                 //above arguments) will trigger the respective listener
@@ -115,7 +114,7 @@ public class WorkLogger implements Runnable{
             LocalDateTime dateTime = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
             String todayDateString = dateTime.format(formatter);
-            String pathname = this.conf.getLogPath() + File.separator + this.conf.getProjectName() + todayDateString +".txt";
+            String pathname = this.conf.getLogPath() + File.separator + this.conf.getProjectName() + todayDateString + ".txt";
             System.err.println(pathname);
 
             File file = new File(pathname);
@@ -135,7 +134,7 @@ public class WorkLogger implements Runnable{
         SwingUtilities.updateComponentTreeUI(frame); // refreshes UI
     }
 
-    private void setTheme(){
+    private void setTheme() {
         if (conf.getGuiTheme().equals("dark")) {
             try {
                 UIManager.setLookAndFeel(new FlatDarkLaf());

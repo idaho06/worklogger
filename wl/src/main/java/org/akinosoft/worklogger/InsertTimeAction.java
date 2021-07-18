@@ -15,7 +15,7 @@ public class InsertTimeAction extends AbstractAction {
     @Serial
     private static final long serialVersionUID = -1_946_232_714_716_886_328L;
 
-    public InsertTimeAction(WorkLogger wl){
+    public InsertTimeAction(WorkLogger wl) {
         worklogger = wl;
         putValue(NAME, "Insert Time");
         putValue(SHORT_DESCRIPTION, "Insert current time");
@@ -31,7 +31,7 @@ public class InsertTimeAction extends AbstractAction {
         int cursorPosition = worklogger.notepad.getCaretPosition();
         LocalTime time = LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        worklogger.notepad.insert(time.format(formatter),cursorPosition);
-        System.out.println("Action [" + e.getActionCommand( ) + "]!");
+        worklogger.notepad.insert(time.format(formatter), cursorPosition);
+        System.out.println("Action [" + e.getActionCommand() + "]!");
     }
 }

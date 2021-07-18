@@ -8,7 +8,7 @@ public class MainJFrame extends JFrame {
 
     private WorkLogger workLogger;
 
-    public MainJFrame(WorkLogger workLogger){
+    public MainJFrame(WorkLogger workLogger) {
         this.workLogger = workLogger;
 
         super.setTitle("WorkLogger");
@@ -17,7 +17,7 @@ public class MainJFrame extends JFrame {
         // General Frame config
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frame.pack(); // size of the window
-        this.setSize(800,600);
+        this.setSize(800, 600);
         this.setLocationByPlatform(true); // location of the window in the screen
 
         // Capture the exit event
@@ -25,7 +25,7 @@ public class MainJFrame extends JFrame {
     }
 
 
-    private void setWindowListener(){
+    private void setWindowListener() {
         this.addWindowListener(new WindowAdapter() {
             /**
              * Invoked when a window has been opened.

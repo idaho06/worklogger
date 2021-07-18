@@ -13,7 +13,7 @@ public class TestAction extends AbstractAction {
     @Serial
     private static final long serialVersionUID = -8_483_173_593_322_509_048L;
 
-    public TestAction(WorkLogger wl){
+    public TestAction(WorkLogger wl) {
         worklogger = wl;
         putValue(NAME, "Test Action");
         putValue(SHORT_DESCRIPTION, "This is a test action");
@@ -27,7 +27,7 @@ public class TestAction extends AbstractAction {
         //System.out.println("Test Action");
         //worklogger.notepad.setText(worklogger.notepad.getText() + "This is a test action ");
         worklogger.notepad.append("This is a test action ");
-        System.out.println("Action [" + e.getActionCommand( ) + "]!");
+        System.out.println("Action [" + e.getActionCommand() + "]!");
 
     }
 }
