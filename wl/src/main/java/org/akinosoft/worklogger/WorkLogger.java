@@ -31,6 +31,27 @@ public class WorkLogger implements Runnable {
     public WorkLogger() {
     }
 
+    public static Font CustomFont(String path, float size) {
+        Font customFont = loadFont(path, size);
+        if (customFont == null) {
+            System.err.println("loadFont did not return a Font object!");
+        }
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(customFont);
+        return customFont;
+    }
+
+    public static Font loadFont(String path, float size){
+        try {
+            Font myFont = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream(path));
+            return myFont.deriveFont(Font.PLAIN, size);
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return null;
+    }
+
     @Override
     public void run() { // <-- Here we build the window (JFrame) with all the elements and create all the event-driven-actions
         // First we set the look and feel
@@ -47,7 +68,8 @@ public class WorkLogger implements Runnable {
         // and a scrollpane containing a text area in the BorderLayout.CENTER
         // JTextArea notepad; // the text edition space. Moved to public element of the class
         notepad = new JTextArea();
-        Font font = new Font("Consolas", Font.PLAIN, 18); // TODO: use custom Inconsolata font bundled with the app
+        //Font font = new Font("Consolas", Font.PLAIN, 18);
+        Font font = CustomFont("Inconsolata-Regular.ttf", 18f);
         notepad.setFont(font);
 
         JScrollPane notepadverticalscroll = new JScrollPane(
