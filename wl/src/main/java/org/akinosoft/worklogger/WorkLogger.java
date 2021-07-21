@@ -63,7 +63,7 @@ public class WorkLogger implements Runnable {
         JMenuItem switchThemeMenuItem = new JMenuItem(new SwitchThemeAction(this));
         JMenuItem changeDirectoryMenuItem = new JMenuItem(new ChooseDirectoryAction(this));
         //JMenuItem changeProjectMenuItem = new JMenuItem(new ChangeProjectAction(options));
-        //JMenuItem aboutMenuItem = new JMenuItem(new AboutAction(frame));
+        JMenuItem aboutMenuItem = new JMenuItem(new AboutAction(frame));
 
 
         JMenu actionMenu = new JMenu("Action");
@@ -76,7 +76,7 @@ public class WorkLogger implements Runnable {
         optionMenu.add(switchThemeMenuItem);
         optionMenu.add(changeDirectoryMenuItem);
         //optionMenu.add(changeProjectMenuItem);
-        //helpMenu.add(aboutMenuItem);
+        helpMenu.add(aboutMenuItem);
 
 
         JMenuBar menuBar = new JMenuBar();
@@ -103,7 +103,7 @@ public class WorkLogger implements Runnable {
 
         notepad.append("\n");
 
-        notepad.requestFocusInWindow();
+        //notepad.requestFocusInWindow();
 
     }
 
