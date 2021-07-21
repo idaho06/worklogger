@@ -1,8 +1,12 @@
 package org.akinosoft.worklogger;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainJFrame extends JFrame {
 
@@ -13,6 +17,11 @@ public class MainJFrame extends JFrame {
 
         super.setTitle("WorkLogger");
         // Configure window icon here
+        try {
+            this.initAppIcons();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // General Frame config
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,6 +31,20 @@ public class MainJFrame extends JFrame {
 
         // Capture the exit event
         this.setWindowListener();
+    }
+
+    private void initAppIcons() throws IOException {
+        ArrayList<Image> icons = new ArrayList<>();
+        icons.add(ImageIO.read(ClassLoader.getSystemResource("wl16.png")));
+        icons.add(ImageIO.read(ClassLoader.getSystemResource("wl24.png")));
+        icons.add(ImageIO.read(ClassLoader.getSystemResource("wl32.png")));
+        icons.add(ImageIO.read(ClassLoader.getSystemResource("wl48.png")));
+        icons.add(ImageIO.read(ClassLoader.getSystemResource("wl64.png")));
+        icons.add(ImageIO.read(ClassLoader.getSystemResource("wl72.png")));
+        icons.add(ImageIO.read(ClassLoader.getSystemResource("wl96.png")));
+        icons.add(ImageIO.read(ClassLoader.getSystemResource("wl128.png")));
+        icons.add(ImageIO.read(ClassLoader.getSystemResource("wl256.png")));
+        super.setIconImages(icons);
     }
 
 
