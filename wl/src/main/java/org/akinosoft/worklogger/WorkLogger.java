@@ -91,8 +91,6 @@ public class WorkLogger implements Runnable {
         frame.setJMenuBar(menuBar);
         frame.setContentPane(mainPanel);
 
-        frame.setVisible(true); // show the window
-
         // insert current time by default
         for (ActionListener a : insertTimeMenuItem.getActionListeners()) {
             a.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Insert Time") {
@@ -103,7 +101,9 @@ public class WorkLogger implements Runnable {
 
         notepad.append("\n");
 
-        //notepad.requestFocusInWindow();
+        notepad.requestFocusInWindow();
+
+        frame.setVisible(true); // show the window
 
     }
 

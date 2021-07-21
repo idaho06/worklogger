@@ -49,6 +49,13 @@ public class MainJFrame extends JFrame {
 
 
     private void setWindowListener() {
+        //Make textField get the focus whenever frame is activated.
+        this.addWindowFocusListener(new WindowAdapter() {
+            public void windowGainedFocus(WindowEvent e) {
+                workLogger.notepad.requestFocusInWindow();
+            }
+        });
+
         this.addWindowListener(new WindowAdapter() {
             /**
              * Invoked when a window has been opened.
