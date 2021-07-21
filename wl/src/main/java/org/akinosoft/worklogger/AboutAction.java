@@ -20,7 +20,7 @@ public class AboutAction extends AbstractAction {
         putValue(NAME, "About WorkLogger...");
         putValue(SHORT_DESCRIPTION, "Information about WorkLogger");
         putValue(LONG_DESCRIPTION, "Copyright, contact and source information for this application.");
-        //putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_T, Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
+        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F1, KeyEvent.KEY_LOCATION_UNKNOWN));
         this.aboutDialog = new AboutDialog(this.frame);
     }
 
