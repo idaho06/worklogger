@@ -123,6 +123,8 @@ public class WorkLogger implements Runnable {
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
+        } else {
+            System.err.println("Empty content! File left untouched.");
         }
 
     }
