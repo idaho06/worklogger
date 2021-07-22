@@ -9,8 +9,6 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
-    // For packaging the app
-    id "org.panteleyev.jpackageplugin" version "1.3.1"
 }
 
 repositories {
@@ -30,7 +28,6 @@ dependencies {
 
     // flat look-and-feel for Swing
     implementation 'com.formdev:flatlaf:1.4'
-
 }
 
 application {
@@ -38,41 +35,39 @@ application {
     mainClass = 'org.akinosoft.worklogger.WorkLogger'
 }
 
-//task("copyDependencies", Copy::class) {
-//    from(configurations.runtimeClasspath).into("$buildDir/jars")
-//}
 
 task copyDependencies(type: Copy) {
     into "$buildDir/jars"
     from configurations.runtimeClasspath
 }
 
-//task("copyJar", Copy::class) {
-//    from(tasks.jar).into("$buildDir/jars")
-//}
-
 task copyJar(type: Copy) {
     into "$buildDir/jars"
     from tasks.jar
 }
 
-/*
-tasks.jpackage {
-    dependsOn("build", "copyDependencies", "copyJar")
+task windowsInstaller(type: Exec) {
+    dependsOn 'build', 'copyJar', 'copyDependencies'
+    workingDir "${buildDir}/jars"
+    def jpackage = 'jpackage'
+    def name = 'WorkLogger'
+    def input = "${buildDir}\\jars"
+    def mainjar = tasks.jar.archiveFileName.get()
+    def mainclass = application.getMainClass().get()
+    def type = 'msi'
+    def dest = "${buildDir}"
+    def icon = "${rootDir}\\wl.ico"
+    def menugroup = 'AkinoSoft'
+    def appversion = '1.0.0'
+    def appdescription = 'Keep track of your work creating text files of your actions in time.'
+    def appvendor = 'AkinoSoft!'
+    def appcopyright = 'idaho06 cesar.idaho@gmail.com'
 
-    input  = "$buildDir/jars"
-    destination = "$buildDir/dist"
-
-    appName = "Non-Modular Application"
-    vendor = "app.org"
-
-    mainJar = tasks.jar.get().archiveFileName.get()
-    mainClass = "org.app.MainClass"
-
-    javaOptions = listOf("-Dfile.encoding=UTF-8")
-
-    windows {
-        winConsole = true
-    }
-}*/
+    //commandLine 'cmd', '/c', 'echo', 'Hello', ' world'
+    executable 'cmd'
+    args '/c', jpackage, '--name', name, '--input', input, '--main-jar', mainjar, '--main-class', mainclass,
+         '--type', type, '--dest', dest, '--win-menu', '--win-menu-group', menugroup, '--app-version', appversion,
+         '--description', appdescription, '--vendor', appvendor, '--copyright', appcopyright, '--icon', icon,
+         '--win-per-user-install', '--win-dir-chooser'
+}
 
