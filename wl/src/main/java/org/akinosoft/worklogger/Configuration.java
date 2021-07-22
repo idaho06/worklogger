@@ -8,6 +8,7 @@ public class Configuration {
     private static final String GUI_THEME = "gui_theme";
     private static final String PROJECT_NAME = "project_name";
     private static final String LOG_PATH = "log_path";
+    private static final String WORD_WRAP = "word_wrap";
 
     private final Preferences prefs;
 
@@ -23,6 +24,10 @@ public class Configuration {
 
     public String getGuiTheme() {
         return prefs.get(GUI_THEME, "dark");
+    }
+
+    public Boolean getWordWrap() {
+        return prefs.getBoolean(WORD_WRAP, false);
     }
 
     public String getLogPath() {
@@ -47,6 +52,10 @@ public class Configuration {
                 setGuiTheme("dark");
             }
         }
+    }
+
+    public void setWordWrap(){
+        prefs.putBoolean(WORD_WRAP, !getWordWrap());
     }
 
     public void setLogPath(String directory) {

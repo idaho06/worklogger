@@ -71,6 +71,8 @@ public class WorkLogger implements Runnable {
         //Font font = new Font("Consolas", Font.PLAIN, 18);
         Font font = CustomFont("Inconsolata-Regular.ttf", 18f);
         notepad.setFont(font);
+        notepad.setLineWrap(conf.getWordWrap());
+        notepad.setWrapStyleWord(true);
 
         JScrollPane notepadverticalscroll = new JScrollPane(
                 notepad,
@@ -83,6 +85,8 @@ public class WorkLogger implements Runnable {
         JMenuItem quitMenuItem = new JMenuItem(new QuitAction(frame));
         JMenuItem insertTimeMenuItem = new JMenuItem(new InsertTimeAction(this));
         JMenuItem switchThemeMenuItem = new JMenuItem(new SwitchThemeAction(this));
+        JCheckBoxMenuItem switchWordWrapCheckBox = new JCheckBoxMenuItem(new SwitchWordWrapAction(this));
+        switchWordWrapCheckBox.setSelected(conf.getWordWrap());
         JMenuItem changeDirectoryMenuItem = new JMenuItem(new ChooseDirectoryAction(this));
         //JMenuItem changeProjectMenuItem = new JMenuItem(new ChangeProjectAction(options));
         JMenuItem aboutMenuItem = new JMenuItem(new AboutAction(frame));
@@ -96,6 +100,7 @@ public class WorkLogger implements Runnable {
         actionMenu.add(quitMenuItem);
         insertMenu.add(insertTimeMenuItem);
         optionMenu.add(switchThemeMenuItem);
+        optionMenu.add(switchWordWrapCheckBox);
         optionMenu.add(changeDirectoryMenuItem);
         //optionMenu.add(changeProjectMenuItem);
         helpMenu.add(aboutMenuItem);
