@@ -33,6 +33,6 @@ public class InsertTimeAction extends AbstractAction {
         LocalTime time = LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         worklogger.notepad.insert(time.format(formatter), cursorPosition);
-        System.out.println("Action [" + e.getActionCommand() + "]!");
+        System.err.println("Action [" + e.getActionCommand() + "]!");
     }
 }
