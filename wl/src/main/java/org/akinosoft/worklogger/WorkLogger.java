@@ -131,11 +131,20 @@ public class WorkLogger implements Runnable {
             });
         }
 
-        notepad.append("\n");
-
-        notepad.requestFocusInWindow();
+        String newLine = System.getProperty("line.separator");
+        notepad.append(newLine);
 
         frame.setVisible(true); // show the window
+
+        // force focus on the notepad
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                //notepad.grabFocus();
+                notepad.requestFocusInWindow();
+            }
+        });
+
 
     }
 
