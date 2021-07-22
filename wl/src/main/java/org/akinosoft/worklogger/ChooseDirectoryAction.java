@@ -2,6 +2,7 @@ package org.akinosoft.worklogger;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.io.Serial;
 
 public class ChooseDirectoryAction extends AbstractAction {
@@ -17,7 +18,7 @@ public class ChooseDirectoryAction extends AbstractAction {
         putValue(SHORT_DESCRIPTION, "Select log directory.");
         putValue(LONG_DESCRIPTION, "Select the directory where the work log will be created.");
         //putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_T, Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
-
+        putValue(MNEMONIC_KEY, KeyEvent.VK_L);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class ChooseDirectoryAction extends AbstractAction {
                 worklogger.conf.setLogPath(directoryChooser.getSelectedFile().toString());
             }
         } else {
-            //System.err.println("No Selection ");
+            System.err.println("No Directory Selection ");
         }
     }
 }

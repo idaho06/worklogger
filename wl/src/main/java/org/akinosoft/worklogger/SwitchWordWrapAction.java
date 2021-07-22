@@ -19,6 +19,7 @@ public class SwitchWordWrapAction extends AbstractAction {
         putValue(SHORT_DESCRIPTION, "Line word wrap configuration.");
         putValue(LONG_DESCRIPTION, "Makes long lines to be broken at the end of the editor or not.");
         //putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_T, Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
+        putValue(MNEMONIC_KEY, KeyEvent.VK_W);
     }
 
     @Override

@@ -20,7 +20,7 @@ public class QuitAction extends AbstractAction {
         putValue(SHORT_DESCRIPTION, "Exit WorkLogger");
         putValue(LONG_DESCRIPTION, "Saves content to the log file and exits");
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Q, Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
-
+        putValue(MNEMONIC_KEY, KeyEvent.VK_Q);
     }
 
     @Override

@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -93,9 +94,13 @@ public class WorkLogger implements Runnable {
 
 
         JMenu actionMenu = new JMenu("Action");
+        actionMenu.setMnemonic(KeyEvent.VK_A);
         JMenu insertMenu = new JMenu("Insert");
+        insertMenu.setMnemonic(KeyEvent.VK_I);
         JMenu optionMenu = new JMenu("Options");
+        optionMenu.setMnemonic(KeyEvent.VK_O);
         JMenu helpMenu = new JMenu("Help");
+        helpMenu.setMnemonic(KeyEvent.VK_H);
 
         actionMenu.add(quitMenuItem);
         insertMenu.add(insertTimeMenuItem);

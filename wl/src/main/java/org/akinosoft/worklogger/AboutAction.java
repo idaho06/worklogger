@@ -21,15 +21,13 @@ public class AboutAction extends AbstractAction {
         putValue(SHORT_DESCRIPTION, "Information about WorkLogger");
         putValue(LONG_DESCRIPTION, "Copyright, contact and source information for this application.");
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F1, KeyEvent.KEY_LOCATION_UNKNOWN));
+        putValue(MNEMONIC_KEY, KeyEvent.VK_A);
         this.aboutDialog = new AboutDialog(this.frame);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //System.out.println("Test Action");
-        //worklogger.notepad.setText(worklogger.notepad.getText() + "This is a test action ");
-        //worklogger.notepad.append("This is a test action ");
-        //System.out.println("Action [" + e.getActionCommand() + "]!");
+        System.err.println("Action [" + e.getActionCommand() + "]!");
         this.aboutDialog.setVisible(true);
     }
 

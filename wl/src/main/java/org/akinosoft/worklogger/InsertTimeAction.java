@@ -17,11 +17,12 @@ public class InsertTimeAction extends AbstractAction {
 
     public InsertTimeAction(WorkLogger wl) {
         worklogger = wl;
-        putValue(NAME, "Insert Time");
+        putValue(NAME, "Time hh:mm");
         putValue(SHORT_DESCRIPTION, "Insert current time");
         putValue(LONG_DESCRIPTION, "Inserts current time in hh:mm format in the current cursor position.");
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_T, Toolkit.getDefaultToolkit().getMenuShortcutKeyMaskEx()));
-
+        putValue(MNEMONIC_KEY, KeyEvent.VK_T);
+        //putValue(DISPLAYED_MNEMONIC_INDEX_KEY, 7);
     }
 
     @Override
