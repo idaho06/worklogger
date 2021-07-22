@@ -44,9 +44,9 @@ public class AboutAction extends AbstractAction {
 
             String newLine = System.getProperty("line.separator");
             String akinoSoft = "Idaho06 from Akinosoft presents WorkLogger." + newLine +
-                    "A small text editor that saves your entries in a file marking the time of each entry." + newLine +
+                    "A small text editor that saves your entries in a file, marking the time of each entry." + newLine +
                     newLine +
-                    "Follow me on Twitter @idaho06" + newLine +
+                    "Follow me on Twitter: @idaho06" + newLine +
                     "Source code: https://github.com/idaho06/worklogger";
             JTextArea akinoText = new JTextArea(akinoSoft);
             akinoText.setEditable(false);
