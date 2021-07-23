@@ -87,11 +87,13 @@ public class WorkLogger implements Runnable {
         JMenuItem insertTimeMenuItem = new JMenuItem(new InsertTimeAction(this));
         JMenuItem switchThemeMenuItem = new JMenuItem(new SwitchThemeAction(this));
         JCheckBoxMenuItem switchWordWrapCheckBox = new JCheckBoxMenuItem(new SwitchWordWrapAction(this));
-        switchWordWrapCheckBox.setSelected(conf.getWordWrap());
+        JCheckBoxMenuItem switchInsertTimeCheckBox = new JCheckBoxMenuItem(new SwitchInsertTimeAtStartAction(this));
         JMenuItem changeDirectoryMenuItem = new JMenuItem(new ChooseDirectoryAction(this));
         //JMenuItem changeProjectMenuItem = new JMenuItem(new ChangeProjectAction(options));
         JMenuItem aboutMenuItem = new JMenuItem(new AboutAction(frame));
 
+        switchWordWrapCheckBox.setSelected(conf.getWordWrap());
+        switchInsertTimeCheckBox.setSelected(conf.getInsertTime());
 
         JMenu actionMenu = new JMenu("Action");
         actionMenu.setMnemonic(KeyEvent.VK_A);
@@ -105,6 +107,7 @@ public class WorkLogger implements Runnable {
         actionMenu.add(quitMenuItem);
         insertMenu.add(insertTimeMenuItem);
         optionMenu.add(switchThemeMenuItem);
+        optionMenu.add(switchInsertTimeCheckBox);
         optionMenu.add(switchWordWrapCheckBox);
         optionMenu.add(changeDirectoryMenuItem);
         //optionMenu.add(changeProjectMenuItem);
@@ -117,22 +120,14 @@ public class WorkLogger implements Runnable {
         menuBar.add(optionMenu);
         menuBar.add(helpMenu);
 
-
         mainPanel.add(notepadverticalscroll, BorderLayout.CENTER);
 
         frame.setJMenuBar(menuBar);
         frame.setContentPane(mainPanel);
 
-        // insert current time by default
-        for (ActionListener a : insertTimeMenuItem.getActionListeners()) {
-            a.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Insert Time") {
-                //Nothing need go here, the actionPerformed method (with the
-                //above arguments) will trigger the respective listener
-            });
+        if (conf.getInsertTime()) {
+            insertTimeAtStart(insertTimeMenuItem);
         }
-
-        String newLine = System.getProperty("line.separator");
-        notepad.append(newLine);
 
         frame.setVisible(true); // show the window
 
@@ -150,6 +145,7 @@ public class WorkLogger implements Runnable {
 
     public void saveText() {
         System.err.println("Saving Text to file....");
+        String newLine = System.getProperty("line.separator");
         String text = this.notepad.getText();
         if (!text.isEmpty() || !text.isBlank()) {
             LocalDateTime dateTime = LocalDateTime.now();
@@ -160,7 +156,7 @@ public class WorkLogger implements Runnable {
 
             File file = new File(pathname);
             try {
-                FileUtils.writeStringToFile(file, "\n\n" + text, "UTF-8", true);
+                FileUtils.writeStringToFile(file, newLine + newLine + text, "UTF-8", true);
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
@@ -191,5 +187,16 @@ public class WorkLogger implements Runnable {
                 System.err.println("Failed to initialize LaF Look-and-Feel");
             }
         }
+    }
+
+    private void insertTimeAtStart(AbstractButton insertTimeMenuItem) {
+        for (ActionListener a : insertTimeMenuItem.getActionListeners()) {
+            a.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "Insert Time") {
+                //Nothing need go here, the actionPerformed method (with the
+                //above arguments) will trigger the respective listener
+            });
+        }
+        String newLine = System.getProperty("line.separator");
+        notepad.append(newLine);
     }
 }

@@ -9,6 +9,7 @@ public class Configuration {
     private static final String PROJECT_NAME = "project_name";
     private static final String LOG_PATH = "log_path";
     private static final String WORD_WRAP = "word_wrap";
+    private static final String INSERT_TIME = "insert_time";
 
     private final Preferences prefs;
 
@@ -34,6 +35,10 @@ public class Configuration {
         return prefs.get(LOG_PATH, FileSystemView.getFileSystemView().getHomeDirectory().getAbsolutePath());
     }
 
+    public boolean getInsertTime() {
+        return prefs.getBoolean(INSERT_TIME, true);
+    }
+
     public String getProjectName() {
         return prefs.get(PROJECT_NAME, "WorkLog");
     }
@@ -54,11 +59,17 @@ public class Configuration {
         }
     }
 
-    public void setWordWrap(){
+    public void setWordWrap() {
         prefs.putBoolean(WORD_WRAP, !getWordWrap());
     }
 
     public void setLogPath(String directory) {
         prefs.put(LOG_PATH, directory);
     }
+
+    public void setInsertTime() {
+        prefs.putBoolean(INSERT_TIME, !getInsertTime());
+    }
+
+
 }
