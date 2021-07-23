@@ -23,6 +23,7 @@ public class AboutAction extends AbstractAction {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_F1, KeyEvent.KEY_LOCATION_UNKNOWN));
         putValue(MNEMONIC_KEY, KeyEvent.VK_A);
         this.aboutDialog = new AboutDialog(this.frame);
+        SwingUtilities.invokeLater(() -> this.aboutDialog.okButton.requestFocusInWindow());
     }
 
     @Override
@@ -31,7 +32,9 @@ public class AboutAction extends AbstractAction {
         this.aboutDialog.setVisible(true);
     }
 
-    private class AboutDialog extends JDialog{
+    private class AboutDialog extends JDialog {
+        public JButton okButton;
+
         public AboutDialog(JFrame frame) {
             super(frame, "About WorkLogger", true);
 
@@ -52,15 +55,24 @@ public class AboutAction extends AbstractAction {
             akinoText.setEditable(false);
             aboutPanel.add(akinoText, BorderLayout.CENTER);
 
-            JButton ok = new JButton("Ok");
-            aboutPanel.add(ok, BorderLayout.SOUTH);
+            okButton = new JButton("Ok");
+            aboutPanel.add(okButton, BorderLayout.SOUTH);
             getContentPane().add(aboutPanel, BorderLayout.CENTER);
 
-            ok.addActionListener(new ActionListener() {
+            okButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
                     setVisible(false);
                 }
             });
+
+            this.getRootPane().registerKeyboardAction(
+                    new ActionListener() {
+                        public void actionPerformed(ActionEvent evt) {
+                            setVisible(false);
+                        }
+                    },
+                    KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
+                    JComponent.WHEN_IN_FOCUSED_WINDOW);
 
             this.pack();
             this.setResizable(false);
