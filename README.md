@@ -22,7 +22,7 @@ $ gradlew run
 $ gradlew windowsInstaller
 ```
 
-Result goes to the file `wl\build\WorkLogger-1.0.0.msi`
+Result goes to the file `wl\build\WorkLogger-1.0.1.msi`
 
 ## Things I Learned
 
@@ -41,8 +41,8 @@ Result goes to the file `wl\build\WorkLogger-1.0.0.msi`
 - Setting initial focus on a Swing element at start
 - Loading files from the `resources` directory correctly
 - Loading and using a custom Font
+- Capturing KeyEvents in Swing elements to fire other events
 
 ## TODO
 
-- Add option for changing name of the text file
 - Create Gradle tasks for Linux and macOS? installers

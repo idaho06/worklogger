@@ -58,7 +58,7 @@ task windowsInstaller(type: Exec) {
     def dest = "${buildDir}"
     def icon = "${rootDir}\\wl.ico"
     def menugroup = 'AkinoSoft'
-    def appversion = '1.0.0'
+    def appversion = '1.0.1'
     def appdescription = 'Keep track of your work creating text files of your actions in time.'
     def appvendor = 'AkinoSoft!'
     def appcopyright = 'idaho06 cesar.idaho@gmail.com'

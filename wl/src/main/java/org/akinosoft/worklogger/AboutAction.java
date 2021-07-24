@@ -45,7 +45,7 @@ public class AboutAction extends AbstractAction {
             aboutPanel.add(logoLabel, BorderLayout.WEST);
 
             String newLine = System.getProperty("line.separator");
-            String akinoSoft = "Idaho06 from Akinosoft presents WorkLogger." + newLine +
+            String akinoSoft = "Idaho06 from Akinosoft presents WorkLogger v1.0.1." + newLine +
                     "A small text editor that saves your entries in a file, marking the time of each entry." + newLine +
                     newLine +
                     "Follow me on Twitter: @idaho06" + newLine +
@@ -64,7 +64,7 @@ public class AboutAction extends AbstractAction {
                     evt -> setVisible(false),
                     KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
                     JComponent.WHEN_IN_FOCUSED_WINDOW);
-            /*
+            /* Same, with no lambda, for reference
             this.getRootPane().registerKeyboardAction(
                     new ActionListener() {
                         public void actionPerformed(ActionEvent evt) {
