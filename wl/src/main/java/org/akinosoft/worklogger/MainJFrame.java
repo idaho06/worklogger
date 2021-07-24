@@ -3,7 +3,6 @@ package org.akinosoft.worklogger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -58,10 +57,10 @@ public class MainJFrame extends JFrame {
         //});
 
         // ESC key to close window
-        this.getRootPane().registerKeyboardAction(
+        /*this.getRootPane().registerKeyboardAction(
                 evt -> this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING)),
                 KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, KeyEvent.KEY_LOCATION_UNKNOWN),
-                JComponent.WHEN_IN_FOCUSED_WINDOW);
+                JComponent.WHEN_IN_FOCUSED_WINDOW);*/
 
         this.addWindowListener(new WindowAdapter() {
             /**

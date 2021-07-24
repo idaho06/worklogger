@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -74,6 +75,11 @@ public class WorkLogger implements Runnable {
         notepad.setFont(font);
         notepad.setLineWrap(conf.getWordWrap());
         notepad.setWrapStyleWord(true);
+        // ESC Key captured when focus is in notepad. Does not break Menus.
+        notepad.registerKeyboardAction(
+                evt -> frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING)),
+                KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, KeyEvent.KEY_LOCATION_UNKNOWN),
+                JComponent.WHEN_IN_FOCUSED_WINDOW);
 
         JScrollPane notepadverticalscroll = new JScrollPane(
                 notepad,
