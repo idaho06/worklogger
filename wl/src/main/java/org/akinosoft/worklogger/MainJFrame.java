@@ -3,6 +3,7 @@ package org.akinosoft.worklogger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class MainJFrame extends JFrame {
         this.setLocationByPlatform(true); // location of the window in the screen
 
         // Capture the exit event
-        this.setWindowListener();
+        this.setWindowListeners();
     }
 
     private void initAppIcons() throws IOException {
@@ -48,13 +49,19 @@ public class MainJFrame extends JFrame {
     }
 
 
-    private void setWindowListener() {
+    private void setWindowListeners() {
         //Make textField get the focus whenever frame is activated.
         //this.addWindowFocusListener(new WindowAdapter() {
         //    public void windowGainedFocus(WindowEvent e) {
-                //workLogger.notepad.requestFocusInWindow();
+        //workLogger.notepad.requestFocusInWindow();
         //    }
         //});
+
+        // ESC key to close window
+        this.getRootPane().registerKeyboardAction(
+                evt -> this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING)),
+                KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, KeyEvent.KEY_LOCATION_UNKNOWN),
+                JComponent.WHEN_IN_FOCUSED_WINDOW);
 
         this.addWindowListener(new WindowAdapter() {
             /**
@@ -65,7 +72,7 @@ public class MainJFrame extends JFrame {
             @Override
             public void windowOpened(WindowEvent e) {
                 super.windowOpened(e);
-                MainJFrame.super.requestFocusInWindow();
+                //MainJFrame.super.requestFocusInWindow();
             }
 
             /**
