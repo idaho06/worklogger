@@ -89,7 +89,7 @@ public class WorkLogger implements Runnable {
         JCheckBoxMenuItem switchWordWrapCheckBox = new JCheckBoxMenuItem(new SwitchWordWrapAction(this));
         JCheckBoxMenuItem switchInsertTimeCheckBox = new JCheckBoxMenuItem(new SwitchInsertTimeAtStartAction(this));
         JMenuItem changeDirectoryMenuItem = new JMenuItem(new ChooseDirectoryAction(this));
-        //JMenuItem changeProjectMenuItem = new JMenuItem(new ChangeProjectAction(options));
+        JMenuItem changeProjectMenuItem = new JMenuItem(new ChooseProjectNameAction(this));
         JMenuItem aboutMenuItem = new JMenuItem(new AboutAction(frame));
 
         switchWordWrapCheckBox.setSelected(conf.getWordWrap());
@@ -110,7 +110,7 @@ public class WorkLogger implements Runnable {
         optionMenu.add(switchInsertTimeCheckBox);
         optionMenu.add(switchWordWrapCheckBox);
         optionMenu.add(changeDirectoryMenuItem);
-        //optionMenu.add(changeProjectMenuItem);
+        optionMenu.add(changeProjectMenuItem);
         helpMenu.add(aboutMenuItem);
 
 

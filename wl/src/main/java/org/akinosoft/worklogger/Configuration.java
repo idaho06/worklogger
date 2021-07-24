@@ -71,5 +71,9 @@ public class Configuration {
         prefs.putBoolean(INSERT_TIME, !getInsertTime());
     }
 
+    public void setProjectName(String name) {
+        prefs.put(PROJECT_NAME, name);
+    }
+
 
 }
