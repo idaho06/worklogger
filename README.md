@@ -22,7 +22,7 @@ $ gradlew run
 $ gradlew windowsInstaller
 ```
 
-Result goes to the file `wl\build\WorkLogger-1.0.1.msi`
+Result goes to the file `wl\build\WorkLogger-1.0.2.msi`
 
 ## Things I Learned
 

@@ -45,7 +45,7 @@ public class AboutAction extends AbstractAction {
             aboutPanel.add(logoLabel, BorderLayout.WEST);
 
             String newLine = System.getProperty("line.separator");
-            String akinoSoft = "Idaho06 from Akinosoft presents WorkLogger v1.0.1." + newLine +
+            String akinoSoft = "Idaho06 from Akinosoft presents WorkLogger v1.0.2." + newLine +
                     "A small text editor that saves your entries in a file, marking the time of each entry." + newLine +
                     newLine +
                     "Follow me on Twitter: @idaho06" + newLine +
