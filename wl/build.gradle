@@ -54,6 +54,7 @@ task windowsInstaller(type: Exec) {
     def input = "${buildDir}\\jars"
     def mainjar = tasks.jar.archiveFileName.get()
     def mainclass = application.getMainClass().get()
+    def javaopts = '-Xms128m -Xmx2048m'
     def type = 'msi'
     def dest = "${buildDir}"
     def icon = "${rootDir}\\wl.ico"
@@ -66,6 +67,7 @@ task windowsInstaller(type: Exec) {
     //commandLine 'cmd', '/c', 'echo', 'Hello', ' world'
     executable 'cmd'
     args '/c', jpackage, '--name', name, '--input', input, '--main-jar', mainjar, '--main-class', mainclass,
+            '--java-options', javaopts,
          '--type', type, '--dest', dest, '--win-menu', '--win-menu-group', menugroup, '--app-version', appversion,
          '--description', appdescription, '--vendor', appvendor, '--copyright', appcopyright, '--icon', icon,
          '--win-per-user-install', '--win-dir-chooser'
